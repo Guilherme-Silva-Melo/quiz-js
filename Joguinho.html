@@ -1,11 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script defer src="quiz.js"></script>
 </head>
 <body>
-    
+    <h1>Quiz Simples</h1>
+    <div id="quiz-container">
+        <p id="question"></p>
+        <button onclick="selectAnswer(0)" id="choice0"></button>
+        <button onclick="selectAnswer(1)" id="choice1"></button>
+        <button onclick="selectAnswer(2)" id="choice2"></button>
+        <button onclick="selectAnswer(3)" id="choice3"></button>
+        <p id="result" class="hidden"></p>
+    </div>
 </body>
 </html>
