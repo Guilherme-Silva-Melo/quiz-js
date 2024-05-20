@@ -1,59 +1,89 @@
-const quizData = [
-    {
-        question: "Qual tag HTML é usada para criar um parágrafo?",
-        choices: ["div", "h1", "head", "footer"],
-        correct: 1
-    },
-    {
-        question: "Qual propriedade CSS é usada para alterar a cor de fundo de um elemento?",
-        choices: ["text-shadow", "color", "background-color", "border-color"],
-        correct: 3
-    },
-    {
-        question: "Como referenciar um arquivo css no código html?",
-        choices: ["<link import='style.css'>", "#include <style.css>", "link <style.css>", "<link rel='stylesheet' href='styles.css'>"],
-        correct: 4
-    },
-    {
-        question: "Qual método é usado para selecionar um elemento ID no JavaScript?",
-        choices: ["addEventListener()", "getElementById()", "onClick()", "appendChild()"],
-        correct: 2
-    },
-    {
-        question: "Qual o evento que é disparado quando um elemento é clicado no JavaScript?",
-        choices: ["addEventListener()", "getElementById()", "onClick()", "appendChild()"],
-        correct: 3
-    }
+const quiz = [
+  {
+    pergunta: "Qual tag HTML é usada para criar um parágrafo?",
+    alternativa: ["<div>", "<p>", "<head>", "<footer>"],
+    correta: 1,
+  },
+  {
+    pergunta:
+      "Qual propriedade CSS é usada para alterar a cor de fundo de um elemento?",
+    alternativa: ["text-shadow", "color", "background-color", "border-color"],
+    correta: 2,
+  },
+  {
+    pergunta: "Como referenciar um arquivo css no código html?",
+    alternativa: [
+      "<link import='style.css'>",
+      "#include <style.css>",
+      "link <style.css>",
+      "<link rel='stylesheet' href='styles.css'>",
+    ],
+    correta: 3,
+  },
+  {
+    pergunta:
+      "Qual método é usado para selecionar um elemento ID no JavaScript?",
+    alternativa: [
+      "addEventListener()",
+      "getElementById()",
+      "onClick()",
+      "appendChild()",
+    ],
+    correta: 1,
+  },
+  {
+    pergunta:
+      "Qual o evento que é disparado quando um elemento é clicado no JavaScript?",
+    alternativa: [
+      "addEventListener()",
+      "getElementById()",
+      "onClick()",
+      "appendChild()",
+    ],
+    correta: 2,
+  },
 ];
 
-let currentQuestionIndex = 0;
-let score = 0;
+let index = 0;
+let resultado = 0;
 
-function loadQuestion() {
-    const currentQuestion = quizData[currentQuestionIndex];
-    document.getElementById("question").textContent = currentQuestion.question;
-    document.getElementById("choice0").textContent = currentQuestion.choices[0];
-    document.getElementById("choice1").textContent = currentQuestion.choices[1];
-    document.getElementById("choice2").textContent = currentQuestion.choices[2];
-    document.getElementById("choice3").textContent = currentQuestion.choices[3];
+function mostrarPergunta() {
+  const pergunta = quiz[index];
+  document.getElementById("question").textContent = pergunta.pergunta;
+  document.getElementById("alternativa0").textContent = pergunta.alternativa[0];
+  document.getElementById("alternativa1").textContent = pergunta.alternativa[1];
+  document.getElementById("alternativa2").textContent = pergunta.alternativa[2];
+  document.getElementById("alternativa3").textContent = pergunta.alternativa[3];
 }
 
-function selectAnswer(choiceIndex) {
-    const currentQuestion = quizData[currentQuestionIndex];
-    if (choiceIndex === currentQuestion.correct) {
-        score++;
-    }
-    currentQuestionIndex++;
-    if (currentQuestionIndex < quizData.length) {
-        loadQuestion();
-    } else {
-        showResult();
-    }
+function selectAnswer(i) {
+  const pergunta = quiz[index];
+  if (i === pergunta.correta) {
+    resultado++;
+  }
+  index++;
+  if (index < quiz.length) {
+    mostrarPergunta();
+  } else {
+    showResult();
+  }
 }
-
 function showResult() {
-    document.getElementById("quiz-container").innerHTML = `<p>Você acertou ${score} de ${quizData.length} perguntas.</p>`;
-}
+    if (resultado === quiz.length) {
+      document.getElementById(
+        "container"
+      ).innerHTML = `<div id="parabens" style="background-color: #4CAF50; color: white; padding: 20px; border-radius: 10px;">Parabéns, você acertou todas!</div>`;
+    } else if (resultado >= quiz.length / 2) {
+      document.getElementById(
+        "container"
+      ).innerHTML = `<p style="background-color: #ffcc00; color: white; padding: 20px; border-radius: 10px;">Você acertou ${resultado} de ${quiz.length} perguntas.</p>`;
+    } else {
+      document.getElementById(
+        "container"
+      ).innerHTML = `<p style="background-color: #ff3333; color: white; padding: 20px; border-radius: 10px;">Você acertou ${resultado} de ${quiz.length} perguntas.</p>`;
+    }
+  }
+  
 
 // Inicializa o quiz carregando a primeira pergunta
-loadQuestion();
+mostrarPergunta();
