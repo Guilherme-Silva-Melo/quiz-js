@@ -65,10 +65,10 @@ function selectAnswer(i) {
   if (index < quiz.length) {
     mostrarPergunta();
   } else {
-    showResult();
+    mostrarResultado();
   }
 }
-function showResult() {
+function mostrarResultado() {
     if (resultado === quiz.length) {
       document.getElementById(
         "container"
