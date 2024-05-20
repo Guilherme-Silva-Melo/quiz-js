@@ -29,7 +29,7 @@ const quiz = [
       "onClick()",
       "appendChild()",
     ],
-    correta: 1,
+    correta: 2,
   },
   {
     pergunta:
@@ -40,7 +40,7 @@ const quiz = [
       "onClick()",
       "appendChild()",
     ],
-    correta: 2,
+    correta: 3,
   },
 ];
 
