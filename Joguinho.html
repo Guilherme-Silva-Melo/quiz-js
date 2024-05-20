@@ -13,17 +13,41 @@
         .hidden {
             display: none;
         }
+        #container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .alternativa {
+            display: block; /* Alterando para display block para colocar os botões um abaixo do outro */
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            padding: 15px 30px;
+            margin: 10px auto; /* Adicionando margin auto para centralizar os botões horizontalmente */
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .alternativa:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
     </style>
     <script defer src="quiz.js"></script>
 </head>
 <body>
-    <h1>Quiz Simples</h1>
-    <div id="quiz-container">
+    <h1>Quiz Programação Web Front-End</h1>
+    <div id="container">
         <p id="question"></p>
-        <button onclick="selectAnswer(0)" id="choice0"></button>
-        <button onclick="selectAnswer(1)" id="choice1"></button>
-        <button onclick="selectAnswer(2)" id="choice2"></button>
-        <button onclick="selectAnswer(3)" id="choice3"></button>
+        <button onclick="selectAnswer(0)" class="alternativa" id="alternativa0"></button><br>
+        <button onclick="selectAnswer(1)" class="alternativa" id="alternativa1"></button><br>
+        <button onclick="selectAnswer(2)" class="alternativa" id="alternativa2"></button><br>
+        <button onclick="selectAnswer(3)" class="alternativa" id="alternativa3"></button>
         <p id="result" class="hidden"></p>
     </div>
 </body>
